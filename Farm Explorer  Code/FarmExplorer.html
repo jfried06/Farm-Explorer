@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Explorer</title>
+    <link rel="stylesheet" href="FarmExplorer.css">
+</head>
+<body>
+    <div class="title-container">
+        <div class="title-box">Martha’s Community Farm</div>
+        <div class="subtitle-box">Farm Explorer</div>
+    </div>
+
+    <div class="map-container">
+        <div class="marker" style="top: 52%; left: 5%;" onclick="openPanel(1)">
+            <div class="marker-bubble">Greenhouse</div>
+        </div>
+        <div class="marker" style="top: 70%; left: 10%;" onclick="openPanel(2)">
+            <div class="marker-bubble">Main Garden</div>
+        </div>
+        <div class="marker" style="top: 73%; left: 25%;" onclick="openPanel(3)">
+            <div class="marker-bubble">Perennial Garden</div>
+        </div>
+        <div class="marker" style="top: 36%; left: 50%;" onclick="openPanel(4)">
+            <div class="marker-bubble">The Shop</div>
+        </div>
+        <div class="marker" style="top: 28%; left: 82%;" onclick="openPanel(5)">
+            <div class="marker-bubble">Apiary</div>
+        </div>
+        <div class="marker" style="top: 60%; left: 18%;" onclick="openPanel(6)">
+            <div class="marker-bubble">Mushroom Garden</div>
+        </div>
+        <div class="marker" style="top: 12%; left: 72%;" onclick="openPanel(7)">
+            <div class="marker-bubble">Pollinator Garden</div>
+        </div>
+        <div class="marker" style="top: 5%; left: 65%;" onclick="openPanel(8)">
+            <div class="marker-bubble">Food Forest</div>
+        </div>
+    </div>
+
+    <div id="side-panel" class="side-panel">
+      <div class="panel-img-container">
+          <button class="close-btn" onclick="closePanel()">✖</button>
+          <img id="panel-img" src="" alt="Some Image" class="panel-img">
+          <div id="panel-title" class="panel-title-box">Default</div>
+      </div>
+  
+      <div class="panel-content">
+          <p id="panel-text" class="panel-text">Default description.</p>
+          
+          <div class="icon-container">
+              <a href="#" onclick="iconAction(1)">
+                  <img src="FE VOLUNTEER ICON.png" alt="Icon 1" class="icon">
+              </a>
+              <a href="#" onclick="iconAction(2)">
+                  <img src="FE WORKSHOP ICON.png" alt="Icon 2" class="icon">
+              </a>
+              <a href="#" onclick="iconAction(3)">
+                  <img src="FE FUN FACT ICON.png" alt="Icon 3" class="icon">
+              </a>
+          </div>
+      </div>
+  </div> 
+
+    <script src="FarmExplorer.js"></script>
+</body>
+</html>
