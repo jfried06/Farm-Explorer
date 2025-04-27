@@ -1,1 +1,22 @@
-# Farm-Explorer
+Hello! This is the documentation for Martha's Farm on how to implement our Farm Explorer code.
+
+
+Squarespace
+-----------------------
+
+
+Miscellaneous
+-----------------------
+
+If for any reason you ever need to update the background map image of the farm with other artwork, simply replace the current map.png file with another image. Alternatively, line 5 in 'FarmExplorer.css' can be changed from map.png to whatever your new image is called.
+
+If you need to change the position of the waypoint icons to accommodate a new background map image, open 'FarmExplorer.html' and look at lines 15-39. Here you'll find the data for all the waypoints which are all labelled so you can easily identify which is which. For each waypoint you will see a bit of text that says: ;style="top: XX%; left: XX%;'. To change the position of a waypoint, simply change these parameters so that the waypoint's position matches the desired location.
+
+If you have any questions, feel free to reach out to Dr. Cooney or any of us at these emails:
+
+cmoral01@villanova.edu
+jfried06@villanova.edu
+mmurph104@villanova.edu
+
+Thanks for letting us work on this project!
+-Carlos, Jackson, & Mikey

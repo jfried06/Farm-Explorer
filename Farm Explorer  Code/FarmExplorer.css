@@ -90,6 +90,7 @@
   font-size: 20px;
   cursor: pointer;
 }
+
 body {
   margin: 0;
   overflow: hidden;
@@ -144,6 +145,7 @@ body {
 .title-container.shifted {
   transform: translateX(350px); /* Increased shift distance */
 }
+
 .side-panel {
   position: fixed;
   top: 0;
