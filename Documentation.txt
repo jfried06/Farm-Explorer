@@ -3,8 +3,23 @@ Hello! This is the documentation for Martha's Farm on how to implement our Farm 
 
 Squarespace
 -----------------------
+There are a few steps to getting our code to work on Squarespace:
 
+1. Create a new Blank Page on your Squarespace site to house the Farm Explorer.
 
+2. Next the Farm Explorer page, click on the gear that shows up next to the name. From there, click Navigation, then uncheck both the Show Header and Show Footer options. 
+
+3. Under the same settings page as the previous step, find Advanced. From there, paste the contents of FarmExplorer.html into the text box that says Page Header Code Injection. Under that in the same box, paste the following: 
+
+	1. <script>
+	2. (the contents of FarmExplorer.js)
+	3. </script>
+
+Now you can leave the settings page.
+
+4. Under Website Tools, click Custom CSS. Add the contents of FarmExplorer.css to whatever is currently in the text box labelled Custom Files.
+
+5. 
 
 Miscellaneous
 -----------------------
