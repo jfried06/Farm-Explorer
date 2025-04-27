@@ -1,0 +1,5 @@
+Here are the changes implemented from our UI test:
+
+1. More readable text on side paneling. Not only did we increase its size, but we also boldened it. 
+2. Location text over waypoint icons. Now the user doesn't need to click on the waypoint to know which location it refers to.
+3. 
