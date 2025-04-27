@@ -1,11 +1,21 @@
-.map-container {
-  position: relative;
+.map-wrapper {
   width: 100vw;
+  height: 100vh;
+  overflow-x: auto; /* Enable horizontal scroll */
+  overflow-y: hidden; /* Disable vertical scroll */
+  position: relative;
+  background: black; /* Optional: background color behind the map */
+}
+
+.map-container {
+  width: 101vw; /* Make the map wider than the screen */
   height: 100vh;
   background: url('map.png') no-repeat center center;
   background-size: cover;
-  transition: transform 0.3s ease-in-out; /* Smooth background shift */
+  transition: transform 0.3s ease-in-out;
+  position: relative;
 }
+
 
 .map-container.shifted {
   transform: translateX(350px); /* Use CSS variable for dynamic shift */
@@ -249,3 +259,19 @@ body {
 .icon:hover {
   transform: scale(1.1);
 }
+
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-label {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #556B2F;
+  font-weight: bold;
+}
+
+

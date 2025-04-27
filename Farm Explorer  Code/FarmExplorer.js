@@ -43,6 +43,8 @@ const panelData = {
 let activeMarker = null; // Store the currently active marker
  
 let currentPanel = null; // Track which panel is currently active
+
+let activeTooltip = null; // Track active tooltip
  
 function openPanel(markerId) {
     const data = panelData[markerId];
@@ -68,29 +70,43 @@ function openPanel(markerId) {
  
     // Update the current active panel
     currentPanel = markerId;
+
+   // Close tooltip if any
+    removeTooltip();
 }
  
 function closePanel() {
     document.getElementById("side-panel").style.left = "-400px";
     document.querySelector(".map-container").classList.remove("shifted"); // Reset background
-    document.querySelector(".map-container").classList.remove("shifted");
     document.querySelector(".title-container").classList.remove("shifted");
     if (activeMarker) {
         activeMarker.style.backgroundColor = "olive";
         activeMarker = null; // Reset active marker reference
     }
+    // Close tooltip if any
+    removeTooltip();
 }
 function iconAction(iconId) {
-    // Remove existing tooltip if any
-    const existingTooltip = document.querySelector(".icon-tooltip");
-    if (existingTooltip) {
-        existingTooltip.remove();
+    if (currentPanel == null) {
+        alert("Please click on a marker first!");
+        return;
     }
- 
+
+    // If tooltip is already open for the same icon, close it
+    if (activeTooltip && activeTooltip.dataset.iconId == iconId) {
+        removeTooltip();
+        return;
+    }
+
+    // Otherwise, remove any existing tooltip and show new one
+    removeTooltip();
+
     // Create tooltip container
     const tooltip = document.createElement("div");
     tooltip.classList.add("icon-tooltip");
- 
+    tooltip.dataset.iconId = iconId; // Keep track of which icon
+
+
     // Define content for each icon based on the active panel
     const iconData = {
         1: { // Greenhouse
@@ -153,23 +169,24 @@ function iconAction(iconId) {
         }
     };
  
-    // Select icon-specific message based on the current panel
-    const currentIconData = iconData[currentPanel] || iconData[1]; // Default to panel 1 if currentPanel is not defined
- 
-    tooltip.innerHTML = currentIconData[iconId] || "More information coming soon!"; // Use innerHTML to render the link
- 
-    // Find clicked icon's position
-    const iconElement = document.querySelector(`.icon-container a:nth-child(${iconId})`);
+   // Define content for each icon based on the active panel
+    const currentIconData = iconData[currentPanel] || iconData[1];
+
+    tooltip.innerHTML = currentIconData[iconId] || "More information coming soon!";
+
+    // Correct way to find the clicked icon:
+    const iconElements = document.querySelectorAll(".icon-container a");
+    const iconElement = iconElements[iconId - 1]; // Fix: nth-child didn't work because of the structure
     if (!iconElement) return;
- 
+
     document.body.appendChild(tooltip);
- 
+
     // Position tooltip near the clicked icon
     const rect = iconElement.getBoundingClientRect();
     tooltip.style.top = `${rect.top + window.scrollY - 10}px`;
     tooltip.style.left = `${rect.right + 10}px`;
- 
-    // Add speech bubble effect using CSS
+
+    // Style the tooltip
     tooltip.style.position = "absolute";
     tooltip.style.background = "black";
     tooltip.style.color = "white";
@@ -178,24 +195,26 @@ function iconAction(iconId) {
     tooltip.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.3)";
     tooltip.style.maxWidth = "220px";
     tooltip.style.zIndex = "1000";
- 
-    // Add triangle pointer
+
+    // Optional: Add triangle (speech bubble effect)
     const triangle = document.createElement("div");
     triangle.style.position = "absolute";
-    triangle.style.top = "50%";
     triangle.style.left = "-10px";
-    triangle.style.borderWidth = "5px";
-    triangle.style.borderStyle = "solid";
-    triangle.style.borderColor = "transparent black transparent transparent";
+    triangle.style.top = "10px";
+    triangle.style.width = "0";
+    triangle.style.height = "0";
+    triangle.style.borderTop = "10px solid transparent";
+    triangle.style.borderBottom = "10px solid transparent";
+    triangle.style.borderRight = "10px solid black";
+
     tooltip.appendChild(triangle);
- 
-    // Remove tooltip on click anywhere
-    document.addEventListener("click", function removeTooltip(event) {
-        if (!tooltip.contains(event.target) && !iconElement.contains(event.target)) {
-            tooltip.remove();
-            document.removeEventListener("click", removeTooltip);
-        }
-    });
+    activeTooltip = tooltip;
+
+   
 }
- 
- 
+function removeTooltip() {
+    if (activeTooltip) {
+        activeTooltip.remove();
+        activeTooltip = null;
+    }
+}
