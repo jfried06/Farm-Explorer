@@ -5,21 +5,71 @@ Squarespace
 -----------------------
 There are a few steps to getting our code to work on Squarespace:
 
-1. Create a new Blank Page on your Squarespace site to house the Farm Explorer.
+1. Create a New Page
+- Create a new "Blank Page" on your Squarespace site.
+- This page will host the "Farm Explorer".
 
-2. Next the Farm Explorer page, click on the gear that shows up next to the name. From there, click Navigation, then uncheck both the Show Header and Show Footer options. 
+---
 
-3. Under the same settings page as the previous step, find Advanced. From there, paste the contents of FarmExplorer.html into the text box that says Page Header Code Injection. Under that in the same box, paste the following: 
+2. Access Code Injection
+- Select the Farm Explorer page you just created.
+- In the left sidebar, go to:  
+  "Utilities -> Website Tools -> Code Injection".
 
-	1. <script>
-	2. (the contents of FarmExplorer.js)
-	3. </script>
+---
 
-Now you can leave the settings page.
+3. Add HTML and JavaScript
+In the "Header" section:
+1. Paste the full contents of FarmExplorer.html.
+2. Directly underneath, paste the following:
+    <script>
+    (Paste the contents of FarmExplorer.js here)
+    </script>
+- Click "Save" (top-left corner) to confirm changes.
 
-4. Under Website Tools, click Custom CSS. Add the contents of FarmExplorer.css to whatever is currently in the text box labelled Custom Files.
+---
 
-5. 
+4. Add Custom CSS
+- Return to "Website Tools".
+- Click on "Custom CSS".
+- In the CSS text box, paste the contents of FarmExplorer.css.
+
+---
+
+5. Upload Images
+- In the "Custom CSS" area, open the "Custom Files" dropdown.
+- Upload all images you want to use for Farm Explorer.
+
+---
+
+6. Get Image URLs
+- After uploading, click each uploaded file to get its Squarespace-hosted URL.
+- Copy each URL into a document (such as Word, Notepad, etc.) for easy access.
+- Important:
+  Remove any auto-added URL links from the Custom CSS text box — leave only your original CSS code there.
+
+---
+
+7. Update Image References in CSS
+- In your pasted CSS code, find any references to image files, e.g.:
+    background: url('map.png') no-repeat center center;
+- Replace the filename (like 'map.png') with the full URL from Squarespace:
+    background: url('https://static1.squarespace.com/path-to-your-map.png') no-repeat center center;
+- Make sure to keep the single quotes around the URL.
+
+---
+
+8. Update Image References in HTML and JavaScript
+- In your injected HTML and JavaScript code (from Step 3):
+  - Find any image names like imageName.png or imageName.jpg.
+  - Replace each with the corresponding Squarespace URL.
+
+---
+
+Notes
+- Always double-check the full paths of your images.
+- Make sure the URLs stay within single quotes wherever they are used.
+- Save your changes frequently during setup.
 
 Miscellaneous
 -----------------------
